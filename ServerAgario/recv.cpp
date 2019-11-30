@@ -12,8 +12,13 @@ void *Recv(void *arg){
     {
         rc = recv(player[clientid].sock, (char*)packet, MAX_SIZE, 0);
 
-        if(rc < 0) //pacote inválido
+        if(rc <= 0) //pacote inválido
+        {
+            printf("Desconectado clientid: %d\n", clientid);
             DC(clientid);
+        }
+       // else
+       //     printf("%s\n", packet);
         else
             packetControl((char*)packet, clientid, (WORD)rc);
     }

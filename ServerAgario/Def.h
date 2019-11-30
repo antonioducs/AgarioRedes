@@ -26,4 +26,15 @@ typedef struct{
     DWORD TimeStamp;
 
 }Header;
+
+typedef struct{
+    Header header;
+    char msg[150];
+}pSendMsg;
+
+typedef struct{
+    Header header;
+    char name[15];
+}pLogin;
+
 #endif // __DEF_H__

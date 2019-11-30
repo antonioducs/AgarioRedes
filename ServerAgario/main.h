@@ -17,7 +17,7 @@
 #define MAX_SIZE 4096
 
 #define DC_CLIENT 0x0A
-
+#define SEND_MSG 0x03
 
 //FUNCOES
 void startSocket();
@@ -30,4 +30,8 @@ void *Recv(void *arg);
 extern BYTE conectados;
 extern pthread_t thread[MAX_CONNECT];
 extern playerLog player[MAX_CONNECT];
+
+//pacotes
+void Login(char *packet);
+
 #endif // __MAIN_H__

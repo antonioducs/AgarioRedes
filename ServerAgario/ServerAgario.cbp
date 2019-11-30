@@ -32,7 +32,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Def.h" />
+		<Unit filename="Funcs.cpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="main.h" />
+		<Unit filename="packetControl.cpp" />
+		<Unit filename="recv.cpp" />
+		<Unit filename="startSocket.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

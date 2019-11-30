@@ -53,7 +53,14 @@ void startSocket()
             }
             else
             {
-                //servidor cheio
+                pSendMsg p;
+                p.header.packetID = SEND_MSG;
+                p.header.Size = sizeof(p);
+                sprintf(&p.msg[0], "Servidor cheio!");
+
+                char Pacote[p.header.Size];
+                memcpy(&Pacote, &p, sizeof(p));
+                send(novosock, (char*)Pacote, p.header.Size, 0);
             }
         }
 	}
@@ -61,7 +68,7 @@ void startSocket()
 
 BYTE set_null_thread(){
     BYTE res;
-    for(BYTE i = 0; i < MAX_CONNECT; i++)
+    for(BYTE i = 1; i < MAX_CONNECT; i++)
     {
         if(player[i].sock == 0)//verifica se não está em uso
         {
