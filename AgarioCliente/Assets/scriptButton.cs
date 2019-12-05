@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Net.Sockets; //lib sockets C#
-using System.Net; //lib sockets C#
 using System;
-using System.IO;
-using System.Runtime.InteropServices;
 using System.Text;
+using System.Runtime.InteropServices;
 using structDef;
 using utilFuncs;
 
@@ -38,29 +36,25 @@ public class scriptButton : MonoBehaviour
 
             sockStream = cliente.GetStream();
 
-            /* sLogin p;
-             p.header.clientid = 0;
-             p.header.packetID = 0x01;
-             p.header.timeStamp = (ulong)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-             p.name = new byte[15];
-             p.name = Encoding.ASCII.GetBytes(nickName.text);
-             p.header.size = (ushort)Marshal.SizeOf(typeof(sLogin));
-             if(p.name.Length < 15)
-             {
-                 p.name[p.name.Length - 1] = 0;
-             }
+            sLogin p;
+            p.header.clientid = 0;
+            p.header.packetID = 0x01;
+            unsafe
+            {
+                for(byte i = 0; i < nickName.text.Length; i++)
+                {
+                    p.name[i] = nickName.text.ToCharArray()[i];
+                }
+            }
+            
+            p.header.size = Marshal.SizeOf(typeof(sLogin));
 
-             byte[] pacote = new byte[p.header.size];*/
-            teste p;
-            p.name = new byte[15];
-           
-            byte[] name = Encoding.ASCII.GetBytes(nickName.text);
+            byte[] pacote = new byte[p.header.size];
 
-            byte[] pacote = new byte[nickName.text.Length];
-            transcData tData = new transcData();
-          //  pacote = tData.StructureToByteArray(name);
-            sockStream.Write(name, 0, pacote.Length);
-                
+            transcData td = new transcData();
+            pacote = transcData.StructureToBuffer<sLogin>(p);
+
+            sockStream.Write(pacote, 0, pacote.Length);
             sockStream.Close();
             cliente.Close();
         }

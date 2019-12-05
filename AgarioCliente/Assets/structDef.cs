@@ -1,25 +1,24 @@
 ﻿
 
+using System;
+using System.IO;
+using System.Runtime.InteropServices;
+using UnityEngine;
+
 namespace structDef
 {
-
     public struct Header
     {
-        public ushort size;
-
+        public int size;
         public byte packetID;
         public byte clientid;
 
-        public ulong timeStamp;
-    }
-    public struct sLogin
-    {
-        public Header header;
-        public byte[] name;
     }
 
-    public struct teste
+    unsafe public struct sLogin
     {
-        public byte[] name;
+        public Header header;
+        public fixed char name[15];
     }
 }
+

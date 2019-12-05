@@ -18,12 +18,10 @@ typedef struct{
 
 
 typedef struct{
-    WORD Size;
+    int Size;
 
     BYTE packetID;
     BYTE clientid;
-
-    DWORD TimeStamp;
 
 }Header;
 
