@@ -17,9 +17,13 @@ void *Recv(void *arg){
             printf("Desconectado clientid: %d\n", clientid);
             DC(clientid);
         }
+        else{
+            printf("%s\n", packet);
+            Login((char*)packet);
+        }
+        //else
+           //printf("%s\n", packet);
        // else
-       //     printf("%s\n", packet);
-        else
-            packetControl((char*)packet, clientid, (WORD)rc);
+           // packetControl(&packet, clientid, (WORD)rc);
     }
 }

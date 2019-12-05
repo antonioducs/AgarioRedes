@@ -5,6 +5,7 @@
 		<Option title="ServerAgario" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
+		<Option virtualFolders="Pacotes\;Sockets\;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/ServerAgario" prefix_auto="1" extension_auto="1" />
@@ -34,11 +35,20 @@
 		</Compiler>
 		<Unit filename="Def.h" />
 		<Unit filename="Funcs.cpp" />
+		<Unit filename="Login.cpp">
+			<Option virtualFolder="Pacotes/" />
+		</Unit>
 		<Unit filename="main.cpp" />
 		<Unit filename="main.h" />
-		<Unit filename="packetControl.cpp" />
-		<Unit filename="recv.cpp" />
-		<Unit filename="startSocket.cpp" />
+		<Unit filename="packetControl.cpp">
+			<Option virtualFolder="Pacotes/" />
+		</Unit>
+		<Unit filename="recv.cpp">
+			<Option virtualFolder="Sockets/" />
+		</Unit>
+		<Unit filename="startSocket.cpp">
+			<Option virtualFolder="Sockets/" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />

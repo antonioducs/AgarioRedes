@@ -1,7 +1,11 @@
 #include "main.h"
 
+typedef struct  {
+    char name[15];
+}teste;
+
 void Login(char *packet)
 {
-    pLogin *p = (pLogin*)packet;
+    teste *p = (teste*)packet;
     printf("Name: %s\n", p->name);
 }

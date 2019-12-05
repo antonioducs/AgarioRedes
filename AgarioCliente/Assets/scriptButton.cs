@@ -38,18 +38,29 @@ public class scriptButton : MonoBehaviour
 
             sockStream = cliente.GetStream();
 
-            sLogin p;
-            p.header.clientid = 0;
-            p.header.packetID = 0x01;
-            p.header.timeStamp = (ulong)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-            p.name = nickName.text.ToCharArray();
-            p.header.size = (ushort)Marshal.SizeOf(typeof(sLogin));
+            /* sLogin p;
+             p.header.clientid = 0;
+             p.header.packetID = 0x01;
+             p.header.timeStamp = (ulong)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+             p.name = new byte[15];
+             p.name = Encoding.ASCII.GetBytes(nickName.text);
+             p.header.size = (ushort)Marshal.SizeOf(typeof(sLogin));
+             if(p.name.Length < 15)
+             {
+                 p.name[p.name.Length - 1] = 0;
+             }
 
-            byte[] pacote = new byte[p.header.size];
+             byte[] pacote = new byte[p.header.size];*/
+            teste p;
+            p.name = new byte[15];
+           
+            byte[] name = Encoding.ASCII.GetBytes(nickName.text);
+
+            byte[] pacote = new byte[nickName.text.Length];
             transcData tData = new transcData();
-            pacote = tData.StructureToByteArray(p);
-            sockStream.Write(pacote, 0, pacote.Length);
-
+          //  pacote = tData.StructureToByteArray(name);
+            sockStream.Write(name, 0, pacote.Length);
+                
             sockStream.Close();
             cliente.Close();
         }

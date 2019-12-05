@@ -15,7 +15,11 @@ namespace structDef
     public struct sLogin
     {
         public Header header;
-        public char[] name;
+        public byte[] name;
     }
 
+    public struct teste
+    {
+        public byte[] name;
+    }
 }

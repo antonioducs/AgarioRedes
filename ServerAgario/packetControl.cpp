@@ -12,7 +12,7 @@ void packetControl(char *packet, BYTE clientid, WORD Size)
         switch(p->packetID)
         {
         case 0x01: //pacote de login
-            Login((char*)packet);
+            Login(packet);
             break;
 
             default:
