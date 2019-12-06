@@ -38,6 +38,9 @@
 		<Unit filename="Login.cpp">
 			<Option virtualFolder="Pacotes/" />
 		</Unit>
+		<Unit filename="Movimentar.cpp">
+			<Option virtualFolder="Pacotes/" />
+		</Unit>
 		<Unit filename="main.cpp" />
 		<Unit filename="main.h" />
 		<Unit filename="packetControl.cpp">

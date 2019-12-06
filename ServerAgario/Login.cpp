@@ -47,6 +47,7 @@ void Login(char *packet, BYTE clientid)
     stw2.header.packetID = SEND_TO_WORD;
     stw2.header.Size = sizeof(pSendToWorld);
 
+
     for(byte i = 0; i < MAX_CONNECT; i++){
         if(i != clientid && player[i].status == 1){
             stw.header.clientid = i;
@@ -62,6 +63,7 @@ void Login(char *packet, BYTE clientid)
 
             memcpy(&pacote2, &stw2, stw2.header.Size);
             send(player[clientid].sock, (char*)pacote2, stw2.header.Size, 0);
+            Sleep(1000);
         }
     }
 }

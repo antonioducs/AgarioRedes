@@ -62,7 +62,7 @@ public class connectData : MonoBehaviour
                 Header header = transcData.BufferToStructure<Header>(recv, 0);
                 switch (header.packetID)
                 {
-                    case constants.SEND_MSG:
+                    case constants.SEND_MSG: //caso chegue algum pacote de msg, exibe a msg e a conexão não sucedida
                         sMsg r = transcData.BufferToStructure<sMsg>(recv, 0);
                         unsafe { 
                             msgServer.text = new string(r.msg);
@@ -71,7 +71,7 @@ public class connectData : MonoBehaviour
                         sockStream.Close();
                         cliente.Close();
                         break;
-                case constants.ACCEPT_LOGIN:
+                case constants.ACCEPT_LOGIN: //caso chegue o pacote de loguin, envia o player para a cena do game
                     pAcceptLogin al = transcData.BufferToStructure<pAcceptLogin>(recv, 0);
                     //seta dados do player na classe statica
                     player.clientid = al.header.clientid;

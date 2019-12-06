@@ -51,23 +51,22 @@ public class recvPackets : MonoBehaviour
         byte[] pacote = new byte[constants.MAX_SIZE];
         while (true) 
         { 
-            
+            //thread responsável por ficar ouvindo o servidor
             connectData.sockStream.Read(pacote, 0, constants.MAX_SIZE);
             Header packet = transcData.BufferToStructure<Header>(pacote, 0);
-            Debug.Log("Packet id: " + packet.packetID + " Clientid: " + packet.clientid);
             switch (packet.packetID)
             {
-                case constants.SEND_TO_WORLD:
+                case constants.SEND_TO_WORLD: //pacote recebido quando um novo cliente conecta para instancialo no game
                     pSendToWorld p = transcData.BufferToStructure<pSendToWorld>(pacote, 0);
                     pos = new Vector2(p.posX, p.posY);
                     clientid = p.clientid;
-                    isStantiate = true;
+                    isStantiate = true;                    
                     break;
-                case constants.MOV_CLI:
+                case constants.MOV_CLI://pacote recebido quando um cliente ja conectado se movimenta
                     pmov = transcData.BufferToStructure<pMov>(pacote, 0);
                     move = true;
                     break;
-                case constants.DC_CLIENTID:
+                case constants.DC_CLIENTID: //pacote recebido quando algum cliente desconecta para destruir o objeto
                     clientid = packet.clientid;
                     dc = true;
                     break;
