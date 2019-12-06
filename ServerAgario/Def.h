@@ -6,15 +6,17 @@
 typedef struct{
 
     SOCKET sock;
+    BYTE status;
     char name[15];
 
-    WORD posX;
-    WORD posy;
+    float posX;
+    float posY;
 
-    DWORD points;
+    long points;
     BYTE color;
 
 }playerLog;
+
 
 
 typedef struct{
@@ -34,5 +36,36 @@ typedef struct{
     Header header;
     char name[15];
 }pLogin;
+
+typedef struct{
+    Header header;
+    float posX;
+    float posY;
+}pMov;
+
+typedef struct{
+    Header header;
+    float posX;
+    float posY;
+
+    long points;
+    BYTE color;
+
+    char name[15];
+}pAcceptLogin;
+
+typedef struct{
+    Header header;
+
+    byte clientid;
+
+    float posX;
+    float posY;
+
+    long points;
+    BYTE color;
+
+    char name[15];
+}pSendToWorld;
 
 #endif // __DEF_H__

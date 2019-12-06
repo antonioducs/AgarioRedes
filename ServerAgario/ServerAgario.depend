@@ -27,10 +27,10 @@
 1574717060 source:c:\users\anton\onedrive\Área de trabalho\serveragario\serveragario\startsocket.cpp
 	"main.h"
 
-1574716877 source:d:\github\agarioredes\serveragario\funcs.cpp
+1575603161 source:d:\github\agarioredes\serveragario\funcs.cpp
 	"main.h"
 
-1575085957 d:\github\agarioredes\serveragario\main.h
+1575595768 d:\github\agarioredes\serveragario\main.h
 	<stdio.h>
 	<stdlib.h>
 	<WinSock2.h>
@@ -39,13 +39,13 @@
 	<math.h>
 	"Def.h"
 
-1575581328 d:\github\agarioredes\serveragario\def.h
+1575601774 d:\github\agarioredes\serveragario\def.h
 	<windows.h>
 
-1575558389 source:d:\github\agarioredes\serveragario\packetcontrol.cpp
+1575595721 source:d:\github\agarioredes\serveragario\packetcontrol.cpp
 	"main.h"
 
-1575576291 source:d:\github\agarioredes\serveragario\recv.cpp
+1575586070 source:d:\github\agarioredes\serveragario\recv.cpp
 	"main.h"
 
 1575575011 source:d:\github\agarioredes\serveragario\startsocket.cpp
@@ -55,6 +55,9 @@
 	"main.h"
 	<locale.h>
 
-1575581291 source:d:\github\agarioredes\serveragario\login.cpp
+1575603916 source:d:\github\agarioredes\serveragario\login.cpp
+	"main.h"
+
+1575602567 source:d:\github\agarioredes\serveragario\movimentar.cpp
 	"main.h"
 

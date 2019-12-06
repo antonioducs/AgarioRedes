@@ -4,26 +4,12 @@ using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using structDef;
 
 namespace utilFuncs
 {
     public class transcData
     {
-        /*   public byte[] toByteArray()
-            {
-                int size = Marshal.SizeOf(this);
-                byte[] arr = new byte[size];
-                IntPtr pt = Marshal.AllocHGlobal(size);
-                Marshal.StructureToPtr(this, pt, true);
-                Marshal.Copy(pt, arr, 0, Marshal.SizeOf(this));
-
-                Marshal.FreeHGlobal(pt);
-
-                return arr;
-            }
-            */
-
-
         public static Byte[] StructureToBuffer<T>(T structure)
         {
             Byte[] buffer = new Byte[Marshal.SizeOf(typeof(T))];
@@ -37,6 +23,32 @@ namespace utilFuncs
             }
 
             return buffer;
+        }
+
+        public static T BufferToStructure<T>(Byte[] buffer, Int32 offset)
+        {
+            unsafe
+            {
+                fixed (Byte* pBuffer = buffer)
+                {
+                    return (T)Marshal.PtrToStructure(new IntPtr((void*)&pBuffer[offset]), typeof(T));
+                }
+            }
+        }
+
+        public static void sendMov()
+        {
+            pMov p;
+            p.header.packetID = constants.MOV_CLI;
+            p.header.clientid = player.clientid;
+            p.header.size = Marshal.SizeOf(typeof(pMov));
+            p.posX = player.posX;
+            p.posY = player.posY;
+
+            byte[] pacote = new byte[p.header.size];
+            pacote = transcData.StructureToBuffer<pMov>(p);
+
+            connectData.sockStream.Write(pacote, 0, pacote.Length);
         }
     }
 
